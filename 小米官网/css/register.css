@@ -1,0 +1,119 @@
+.vali_info{/* 页面初始，验证消息不显示 */
+	display:none;
+}
+.txt_focus{/*当文本框获得焦点时穿上*/
+	border-top:2px solid black;
+	border-left:2px solid black;
+}/*当文本框失去焦点时脱下*/
+
+.vali_success,.vali_fail{
+	background-repeat:no-repeat;
+  background-position:left center;
+	display:block;
+}
+/* 验证消息：验证通过时的样式 */
+.vali_success{
+    background-image:url("../images/6-配件/ok.png");
+	padding-left:20px;
+	width:0px;height:20px;
+	overflow:hidden;
+}
+/* 验证消息：验证失败时的样式 */
+.vali_fail{
+    background-image:url("../images/6-配件/err.png");
+    border:1px solid red;
+    background-color:#ddd;
+    color:Red;
+    padding-left:30px;
+}
+
+.layput{
+	width: 854px;height: 651px;
+	margin: 0 auto;
+	margin-top: 100px;
+	background: white;
+}
+.top_logon{
+	text-align: center;
+	padding-bottom: 40px;
+}
+.title_big30{
+	font-size: 30px;
+   font-weight: normal;
+	text-align: center;
+	margin: 0;
+}
+.regbox{
+	width: 500px;
+	padding: 30px 0;
+	line-height: 20px;
+	margin: 0 auto;
+}
+.table-reg{
+	text-align: center;
+}
+.inputna{
+	width: 200px;
+	padding: 10px;
+}
+.inputpwd1{
+	width: 200px;
+	padding: 10px;
+}
+.inputpwd2{
+	width: 200px;
+	padding: 10px;
+}
+.submit-reg{
+	width: 330px;
+	height: 42px;
+	margin: 0 auto;
+	line-height: 42px;
+	text-align: center;
+	font-size: 14px;
+	display: block;
+	cursor: pointer;
+	border: 1px solid #e8e8e8;
+	overflow: hidden;
+	background-color: #ff6700;
+	color: white;
+	margin-top: 20px;
+}
+.submit-reg:hover{
+	background-color: #ff936a;
+}
+.cb{
+	width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    margin-top: -4px;
+    display: inline-block;
+    vertical-align: middle;
+	background: url(../../../cn.account.xiaomi.com/static/images/icon_user.png);
+}
+.che_font{
+	font-size: 9px;
+	color: #999999;
+}
+.n-ul{
+	list-style: none;
+	display: flex;
+	justify-content: center;
+}
+.n-ul li{
+	padding-left:10px ;
+	padding-right: 10px;
+}
+.n-ul-a{
+	text-decoration:none ;
+	color: #999;
+	font-size: 14px;
+}
+.n-ul-a:hover{
+	color: black;
+	text-decoration: none;
+}
+.nf-into{
+	color: #9d9d9d;
+	text-align: center;
+}

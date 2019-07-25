@@ -1,0 +1,116 @@
+.layput{
+	width: 854px;height: 651px;
+	margin: 0 auto;
+	margin-top: 100px;
+	background: white;
+}
+.top_logon{
+	text-align: center;
+	padding-bottom: 40px;
+}
+.title_big30{
+	color: #f56600;
+	font-size: 30px;
+   font-weight: normal;
+	text-align: center;
+	margin: 0;
+}
+.regbox{
+	width: 332px;
+	padding: 30px 0;
+	line-height: 20px;
+	margin: 0 auto;
+}
+.table-reg{
+	text-align: center;
+}
+.inputna{
+	width: 200px;
+	padding: 10px;
+}
+.inputpwd{
+	width: 200px;
+	padding: 10px;
+}
+.submit-reg{
+	width: 330px;
+	height: 42px;
+	margin: 0 auto;
+	line-height: 42px;
+	text-align: center;
+	font-size: 14px;
+	display: block;
+	cursor: pointer;
+	border: 1px solid #e8e8e8;
+	overflow: hidden;
+	background-color: #ff6700;
+	color: white;
+	margin-top: 20px;
+}
+.submit-reg:hover{
+	background-color: #ff936a;
+}
+.ljzc{
+	text-align:right;
+}
+.ljzc a{
+	color: #999;
+	font-size: 14px;
+	text-decoration: none;
+}
+.ljzc a:hover{
+	color: #ff6700;
+	text-decoration: none;
+}
+.qtfs{
+	color: #999;
+	text-align: center;
+	font-size: 14px;
+}
+.sprites{
+	width: 200px;
+	margin: 50px auto;
+}
+
+.sprites span{
+	float: left;
+	width: 40px;
+	height: 40px;
+	background-image: url(../11.jpg);
+	background-size: 110px 75px;
+	margin-left: 10px;
+}	
+.sprites1{
+	background-position: 0px 40px;
+}
+.sprites2{
+	background-position: 78px 3px;
+}
+.sprites3{
+	background-position: 5px 3px;
+}
+.sprites4{
+	background-position: 78px 40px;
+}
+.n-ul{
+	list-style: none;
+	display: flex;
+	justify-content: center;
+}
+.n-ul li{
+	padding-left:10px ;
+	padding-right: 10px;
+}
+.n-ul-a{
+	text-decoration:none ;
+	color: #999;
+	font-size: 14px;
+}
+.n-ul-a:hover{
+	color: black;
+	text-decoration: none;
+}
+.nf-into{
+	color: #9d9d9d;
+	text-align: center;
+}

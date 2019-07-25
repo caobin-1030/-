@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/normalize_zh.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/register.css" />
+	</head>
+	<body>
+		<div class="layput">
+			<div class="top_logon">
+				<a href="index.html"><img src="images/1-top/logo.jpg" alt=""></a>
+			</div>
+			<h4 class="title_big30">注册小米帐号</h4>
+			<div class="regbox">
+				<form action="post">
+					<table class="table-reg" cellspacing="10">
+						<tr>
+							<td>
+								<span>登录名称:</span>
+							</td>
+							<td>
+								<input type="text" class="inputna" id="uname" name="uname" placeholder="请输入用户名">
+							</td>
+							<div class="vali_info">
+									6位以上的字母、数字或下划线的组合！
+								</div>
+						</tr>
+						<tr>
+							<td>
+								<span>登录密码:</span>
+							</td>
+							<td>
+								<input type="password" class="inputpwd1" id="upwd" onblur="check_upwd()" name="upwd" placeholder="请输入密码">
+							</td>
+							<td>
+								<div class="vali_info">
+									6位以上的字母、数字或下划线的组合！
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<span>确认密码:</span>
+							</td>
+							<td>
+								<input type="password" class="inputpwd2" id="cpwd"onblur="check_cpwd()" name="cpwd" placeholder="请输入再次输入密码">
+							</td>
+							<td>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<button  class="submit-reg" onclick="reg_post()" >立即注册</button>
+							</td>
+						</tr>
+					</table>
+				</form>
+				<script>
+					/*当文本框获得焦点时，清除文本框旁边的div的class*/
+					//1. 查找触发事件的元素
+					//先找到表单对象
+					var form=document.forms[0];
+					var txtName=form.uname;
+										//form.elements["uname"];
+					var txtPwd=form.upwd;
+										//form.elements["upwd"];
+					//2. 绑定事件处理函数
+					var txtCpwd=form.cpwd;
+					txtName.onfocus=
+					txtPwd.onfocus=function(){
+						//3. 查找要修改的元素
+						//找当前txt的爹的下一个兄弟的唯一一个孩子div
+						var div=this.parentNode //td
+												.nextElementSibling //下一个td
+												.children[0] //div
+						//4. 修改元素
+						div.className="";
+					}
+					
+					//让姓名文本框自动获得焦点——必须放在onfocus后
+					txtName.focus();
+					
+					/*文本框失去焦点，验证当前文本框的内容，修改提示信息的样式*/
+					//为姓名文本框绑定失去焦点事件
+					txtName.onblur=function(){
+						//定义正则表达式
+						var reg=/^\w{1,6}$/;
+						//this->txtName
+						//调用公共的验证方法vali
+						vali.call( this ,reg);
+					}           //  |   ↓
+					function vali(/*|*/reg){
+						//            ↓
+						//this -> window->call->txtName
+						//查找当前文本框旁边的div
+						var div=this.parentNode //td
+												.nextElementSibling //下一个td
+												.children[0] //div
+						//如果正则验证文本框的内容通过
+						if(reg.test(this.value)==true){
+							//就修改div的className为vali_success
+							div.className="vali_success";
+							return true;
+						}else{//否则
+							//就修改div的className为vali_fail
+							div.className="vali_fail";
+							return false;
+						}
+						if(txtCpwd==txtPwd){
+							div.className="vali_success";
+							return true;
+						}else{
+							div.className="vali_fail";
+							return false;
+						}
+					}
+					
+					txtPwd.onblur=function(){
+						//定义正则表达式
+						var reg=/^\w{1,6}$/;
+						//this->txtPwd
+						//调用公共的验证方法vali
+						vali.call( this ,reg);
+					}
+					txtCpwd.onblur=function(){
+						var reg=(txtCpwd==txtPwd);
+						vali.call(this,reg);
+					}
+					//找到整个表单中倒数第一个表单元素——提交按钮，为按钮绑定单击事件
+					var btn=form.elements[form.length-1];
+					//form.length<==>form.elements.length
+					btn.onclick=function(){
+						//先验证姓名文本框:
+						var rName=vali.call( txtName ,/^\w{1,6}$/);
+						//再验证密码框:
+						var rPwd=vali.call( txtPwd ,/^\w{1,6}$/);
+						var cPwd=vali.call(txtCpwd,txtCpwd==txtPwd);
+						//如果所有表单元素都验证通过，才能提交
+						if(rName==true&&rPwd==true&&cPwd==true){
+							console.log("发送ajax请求，提交数据到服务器...")
+						}
+					}
+				</script>
+				<script>
+
+					function reg_post(){
+				   //1获取xhr对象
+						var xhr=new XMLHttpRequest()
+						//4绑定监听
+						xhr.onreadystatechange=function(){
+							 if (xhr.readyState==4 && xhr.status==200)
+							 {     
+								var result=xhr.responseText
+								if (result==1){
+								  d1.innerHTML="注册成功"
+								}else d1.innerHTML="注册失败"
+							 }
+						}
+						//2打开链接创建请求
+						xhr.open("post","http://127.0.0.1:8080/ex/v1/register",true)
+						//3发送请求
+						//创建请求头
+				 xhr.setRequestHeader("content-Type","application/x-www-form-urlencoded")
+					//创建请求主体
+					var formdate="&uname="+uname.value+"&upwd="+upwd.value;
+					xhr.send(formdate);
+				 }
+				</script>
+			</div>
+			<div style="text-align: center;">
+				<label for="che">
+					<input type="checkbox" id="che" checked="checked" value="checkbox" class="cb">
+					<span class="che_font">注册帐号即表示您同意并愿意遵守小米用户协议和隐私政策</span>
+				</label>
+			</div>
+		</div>
+		<div class="nfooter">
+			<ul class="n-ul">
+				<li><a href="#" class="n-ul-a">简体</a></li>
+				<li>|</li>
+				<li><a href="#" class="n-ul-a">繁体</a></li>
+				<li>|</li>
+				<li><a href="#" class="n-ul-a">English</a></li>
+				<li>|</li>
+				<li><a href="#" class="n-ul-a">常见问题</a></li>
+			</ul>
+			<p class="nf-into">
+				<span>小米公司版权所有-京ICP备10046444-<img src="images/12-底部/ghs.png" alt="">京公网安备11010802020134号-京ICP证110507号</span>
+			</p>
+
+		</div>
+	</body>
+</html>

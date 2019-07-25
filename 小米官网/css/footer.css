@@ -1,0 +1,184 @@
+/***************************footer start********************************/
+footer {
+	width: 100%;
+	height: 440px;
+	background-color: #fafafa;
+}
+
+.aboutBG {
+	width: 100%;
+	height: 272px;
+	background-color: #fff;
+}
+
+.about {
+	width: 1226px;
+	height: 272px;
+	margin: 0 auto;
+}
+
+.about .policy ul {
+	width: 1226px;
+	height: 80px;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.about .policy ul li {
+	width: 243px;
+	height: 25px;
+	line-height: 25px;
+	margin-top: 27px;
+	float: left;
+	text-align: center;
+	font-size: 16px;
+	color: #616161;
+	border-right: 1px solid #e0e0e0;
+	cursor: pointer;
+	transition: all .3s;
+	list-style: none;
+}
+
+.about .policy ul li:last-child {
+	border: none;
+}
+
+.about .policy ul li i {
+	font-size: 30px;
+	margin-right: 5px;
+	vertical-align: -5px;
+}
+
+.about .policy ul li:hover {
+	color: #ff6700;
+}
+
+.about .survey {
+	width: 1226px;
+	height: 192px;
+	float: left;
+	padding: 40px 0;
+	box-sizing: border-box;
+}
+
+.about .survey dl {
+	float: left;
+	width: 160px;
+	height: 112px;
+	text-align: left;
+}
+
+.about .survey dl dt {
+	width: 160px;
+	height: 17px;
+	margin-bottom: 26px;
+	text-align: center;
+}
+
+.about .survey dl dd {
+
+	height: 18px;
+	margin-top: 10px;
+	font-size: 12px;
+	margin-left: 50px;
+}
+
+.about .survey dl dd a {
+	text-decoration: none;
+	color: #757575;
+}
+
+.about .survey dl dd a:hover {
+	color: #ff6700;
+}
+
+.about .survey .contact {
+	float: right;
+	width: 251px;
+	height: 112px;
+	border-left: 1px solid #e0e0e0;
+	text-align: center;
+	color: #616161;
+}
+
+.about .survey .contact h2 {
+	margin-bottom: 5px;
+	font-size: 22px;
+	color: #ff6700;
+	font-weight: normal;
+}
+
+.about .survey .contact p {
+	margin-bottom: 16px;
+	font-size: 12px;
+}
+
+.about .survey .contact span {
+	width: 118px;
+	height: 28px;
+	display: inline-block;
+	border: 1px solid #ff6700;
+	background-color: #fff;
+	color: #ff6700;
+	font-size: 12px;
+	line-height: 28px;
+	cursor: pointer;
+	transition: all .4s;
+}
+
+.about .survey .contact span:hover {
+	background-color: #ff6700;
+	color: #fff;
+}
+
+.copy {
+	width: 1226px;
+	height: 57px;
+	margin: 30px auto;
+	box-sizing: border-box;
+}
+
+.copy .bottomLogo {
+	float: left;
+	margin-right: 10px;
+}
+
+.copy .link {
+	width: 750px;
+	height: 54px;
+	float: left;
+	color: #b0b0b0;
+	font-size: 12px;
+}
+
+.copy .link a {
+	color: #757575;
+	font-size: 12px;
+	line-height: 18px;
+	text-decoration: none;
+}
+
+.copy .link a:hover {
+	color: #ff6700;
+}
+
+.copy .verify {
+	width: 380px;
+	height: 28px;
+	float: right;
+	margin-top: 4px;
+}
+
+.copy .verify img {
+	width: 85px;
+	height: 28px;
+	margin-left: 7px;
+	cursor: pointer;
+}
+
+.slogan {
+	width: 267px;
+	height: 19px;
+	margin: 0 auto;
+}
+
+/***************************footer end********************************/

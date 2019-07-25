@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css/order.css" />
+		<link rel="stylesheet" type="text/css" href="css/normalize_zh.css" />
+		<title></title>
+	</head>
+	<body>
+		<script src="header.js"></script>
+		<div class="site-header">
+			<div class="container">
+				<div class="header-logo">
+					<img src="images/1-top/logo.jpg" alt="">
+				</div>
+				<div class="header-title">
+					<h2>我的购物车</h2>
+					<p>温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</p>
+				</div>
+				<div class="header-info">
+					<span>|</span>
+					<a href="static.html">我的订单</a>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<table class="data">
+				<thead>
+					<tr>
+						<th><input type="checkbox" />全选</th>
+						<th></th>
+						<th>商品名称</th>
+						<th>单价</th>
+						<th>数量</th>
+						<th>小计</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input type="checkbox" /></td>
+						<td><img style="width: 80px;height: 60px;" src="images/6-配件/mix.png" alt=""></td>
+						<td> <a href="mix3.html">小米MIX 3 全网通版 8GB内存 黑色 128GB </a></td>
+						<td>￥2999</td>
+						<td>
+							<button type="button">-</button>
+							<span>1</span>
+							<button type="button">+</button>
+						</td>
+						<td>￥2999</td>
+						<td><button class="shanchu">x</button></td>
+					</tr>
+				</tbody>
+
+			</table>
+			<div class="cart">
+				<div class="left">
+					<a href="index.html">继续购物</a>
+				</div>
+				<div class="right">
+					<p>合计：</p>
+					<span>￥2999</span>
+					<a class="bar-btn" href="#">去结算</a>
+				</div>
+			</div>
+		</div>
+		<script>
+			(function() {
+			var table = document.getElementsByClassName("data")[0];
+			console.log(table);
+			//在table中找所有button元素
+			var btns =
+				table.getElementsByTagName("button")
+			console.log(btns);
+			//遍历返回的集合中所有button
+			for (var btn of btns) {
+				//每遍历一个button，就为当前button添加onclick事件的处理函数，其中可以喊疼！
+				btn.onclick = function() {
+					//获得当前正在单击的按钮，保存在局部变量btn中，反复使用
+					var btn = this;
+					//btn.style.backgroundColor="red";
+					/*点按钮，让旁边的*/
+					//找到当前按钮旁边的span
+					var span =
+						//   先找爹td 再找爹下第2个孩子span
+						btn.parentNode.children[1];
+					//td        //span
+					//获得span的内容,强转为整数
+					var n = parseInt(span.innerHTML);
+					if (btn.innerHTML == "+") { //如果点的是+
+						n++; //就+1
+					} else if (n > 1) { //否则 如果点的是-，且内容>1
+						n--; //才能-1
+					}
+					//将修改后的内容再放回span的内容中
+					span.innerHTML = n;
+					var tr = btn.parentNode.parentNode;
+					var price = parseFloat(tr.children[3].innerHTML.slice(1));
+					var subtotal = price * n;
+					tr.children[5].innerHTML = `￥${subtotal.toFixed(2)}`;
+
+					/*计算总计*/
+					//在table下查找tbody下每行最后一个td
+					var tds =table.querySelectorAll(
+						"tbody td:nth-child(5)"
+					);
+					console.log(tds);
+					//在table下找tfoot下最后一个td
+					var tfoot_td = document.querySelector(
+						".right>span"
+					);
+					console.log(tfoot_td);
+					//先定义变量total=0,准备接汇总的总价
+					var total = 0;
+					//遍历tds中每个td
+					for (var td of tds) {
+						//每遍历一个td，就取出当前td的内容，去掉开头的人民币，转为浮点数，累加到total上
+						total += parseFloat(
+							td.innerHTML.slice(1)
+						);
+					}
+					//将total赋值给tfoot_td的内容
+					tfoot_td.innerHTML = `¥${subtotal.toFixed(2)}`
+				}
+			}
+		})()
+		</script>
+		<script>
+			(function() {
+				/*点全选，下方四个跟随全选和取消全选*/
+				//DOM 4步
+				//1. 查找触发事件的元素
+				var chbAll = document.querySelector(
+					"table>thead>tr input"
+				);
+				var chbs = document.querySelectorAll(
+					"table>tbody>tr input"
+				);
+				//2. 绑定事件处理函数
+				chbAll.onclick = function() {
+					var chbAll = this;
+					//3. 查找要修改的元素
+
+					//4. 修改元素
+					for (var chb of chbs) {
+						chb.checked = chbAll.checked;
+					}
+				}
+				/*点下边每个input，都可能影响上边的全选*/
+				for (var chb of chbs) {
+					chb.onclick = function() {
+						var chb = this;
+						//如果当前点的input是取消选中，则上边的input不选中
+						if (chb.checked == false) {
+							chbAll.checked = false;
+						} else { //否则如果当前点的input是选中，上边input不一定选中
+							//查找table下tbody下未选中的input
+							var unchecked = document.querySelector(
+								"table>tbody>tr input:not(:checked)"
+							)
+							//如果找不到未选中的，就说明都选中了！
+							if (unchecked === null) {
+								chbAll.checked = true; //上边input才选中
+							}
+						}
+					}
+				}
+			})()
+		</script>
+		<script>
+			(function(){
+				var btn=document.getElementsByClassName("shanchu");
+				btn.onclick=function(){
+				//先找到当前按钮
+				var btn=this;
+				//再找到当前按钮的爹的die
+				var tr=btn.parentNode.parentNode;
+								//td        //tr
+				//先跟用户确认是否继续删除
+				if(confirm(`是否继续删除 ${tr.cells[0].innerHTML} 吗？`)){
+					table.deleteRow(tr.rowIndex);
+				}
+				}
+			})()
+			</script>
+		<script src="footer.js"></script>
+	</body>
+</html>
